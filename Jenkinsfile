@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage ('Testing') {
       steps {
-          git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/AAT-technologies/Google-Kubernetes-boilerplate.git'
+          git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/AAT-technologies/shippingservice.git'
           sh ''' sudo docker login -u delalixx -p dckr_pat_-dfSKHYHBVZNLTVX1R5sxmNGJwo
           '''
           sh ''' sudo docker system prune -af
