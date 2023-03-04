@@ -9,7 +9,7 @@ pipeline {
           sh ''' sudo docker system prune -af
           '''
          
-         sh ''' cd app/shippingservice
+         sh ''' cd app-shipping/shippingservice
                   ls
                   sudo docker build -t delalixx/shippingservice .
                   sudo docker push delalixx/shippingservice
@@ -19,24 +19,23 @@ pipeline {
          
       }
     }
-//      stage ('Create Deploy to Yaml file') {
-//        steps {
-//          sh ''' ls
-//          '''
-//            withCredentials([aws(credentialsId: 'aws-credentials', region: 'us-east-2')]) {
-//            sh 'kubectl version --client --output=yaml'
-//            sh '''
-//                  aws eks --region us-east-2 update-kubeconfig --name master
-//                  kubectl config current-context
-//                  kubectl config use-context arn:aws:eks:us-east-2:842423002160:cluster/master 
-//                  kubectl apply -f cluster.yaml
-//                  kubectl get node
-//                  kubectl get service
-//                  kubectl get service frontend-external
-//                  '''
-//            }
-//         }
-//      }
+     stage ('Create Deploy to Yaml file') {
+       steps {
+         sh ''' ls
+         '''
+           withCredentials([aws(credentialsId: 'aws-credentials', region: 'ca-central-1')]) {
+           sh 'kubectl version --client --output=yaml'
+           sh '''
+                 aws eks --region ca-central-1 update-kubeconfig --name boot-demo
+                 kubectl config current-context
+                 kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-demo 
+                 kubectl apply -f cluster.yaml
+                 kubectl get node
+                 kubectl get service
+                 '''
+           }
+        }
+     }
   }
 }
 
