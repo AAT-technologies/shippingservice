@@ -31,7 +31,7 @@ pipeline {
                  kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-demo 
                  kubectl apply -f cluster.yaml
                  kubectl get node
-                 kubectl get service
+                 kubectl get service 
                  '''
            }
         }
