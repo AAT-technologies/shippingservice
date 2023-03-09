@@ -46,7 +46,7 @@ spec:
               - all
           privileged: false
           readOnlyRootFilesystem: true
-        image: delalixx/shippingservice:latest
+        image: delalixx/shippingservice:v1
         ports:
         - containerPort: 50051
         env:
