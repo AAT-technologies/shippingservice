@@ -28,7 +28,7 @@ pipeline {
            sh '''
                  aws eks --region ca-central-1 update-kubeconfig --name boot-staging
                  kubectl config current-context
-                 kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-stg 
+                 kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-staging 
                  kubectl apply -f cluster.yaml
                  kubectl get node
                  kubectl get service
