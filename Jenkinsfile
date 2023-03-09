@@ -26,9 +26,9 @@ pipeline {
            withCredentials([aws(credentialsId: 'aws-credentials', region: 'ca-central-1')]) {
            sh 'kubectl version --client --output=yaml'
            sh '''
-                 aws eks --region ca-central-1 update-kubeconfig --name boot-demo
+                 aws eks --region ca-central-1 update-kubeconfig --name boot-pro
                  kubectl config current-context
-                 kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-demo 
+                 kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-pro 
                  kubectl apply -f cluster.yaml
                  kubectl get node
                  kubectl get service 
