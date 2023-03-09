@@ -11,8 +11,8 @@ pipeline {
          
          sh ''' cd app-shipping/shippingservice
                   ls
-                  sudo docker build -t delalixx/shippingservice .
-                  sudo docker push delalixx/shippingservice
+                  sudo docker build -t delalixx/shippingservice:v1 .
+                  sudo docker push delalixx/shippingservice:v1
                   '''
          sh ''' sudo docker system prune -af
                   '''
